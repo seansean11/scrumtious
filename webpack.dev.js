@@ -30,7 +30,8 @@ const config = {
         test: /\.png|\.svg$/,
         loader: 'file-loader'
       }
-    ]
+    ],
+    noParse: /node_modules\/json-schema\/lib\/validate\.js/
   },
   output: {
     path: __dirname + '/dist',

@@ -34,8 +34,6 @@ class JiraApi {
           resolve(session);
         } else {
           if (error) {
-            console.log('hi');
-
             return reject(error);
           } else {
             reject('Status Code:', response.statusCode);

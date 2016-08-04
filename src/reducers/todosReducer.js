@@ -6,7 +6,6 @@ import _ from 'lodash';
 const initialState = [];
 
 export default function todos(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case types.TODOS_ADD:
       return [
