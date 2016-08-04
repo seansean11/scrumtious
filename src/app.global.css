@@ -1,0 +1,210 @@
+@import './app.vars.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root, [data-reactroot] {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: system, -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(to bottom, var(--blue_dk) 0%, var(--blue_lt) 100%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+h5 { font-size: 14px; }
+h6 { font-size: 12px; }
+
+.rte h1 { font-size: 18px; }
+.rte h2 { font-size: 14px; }
+.rte h3 { font-size: 12px; }
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  line-height: normal;
+}
+
+input {
+  display: inline-block;
+  width: 100%;
+  min-height: 25px;
+  outline: none;
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid var(--gray_lt);
+  border-radius: 0;
+  transition: .3s ease-out border-color;
+
+  &:focus {
+    border-bottom: 2px solid var(--purp_lt);
+  }
+}
+
+textarea {
+  height: auto;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.radio,
+.checkbox {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px;
+}
+
+.btn {
+  font-size: 14px;
+  display: inline-block;
+  padding: 8px 24px;
+  background-color: var(--blue_lt);
+  color: #fff;
+  border-radius: 25px;
+  text-transform: uppercase;
+
+  & i {
+    display: inline-block;
+    float: left;
+    margin-right: 4px;
+  }
+
+  & span {
+    display: inline-block;
+    line-height: 1.65;
+  }
+}
+
+.btn-secondary {
+  background-color: var(--purp_lt);
+}
+
+.btn-tertiary {
+  background-color: var(--blue_dk);
+}
+
+.app-body {
+  display: flex;
+  height: 100%;
+}
+
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  width: 86px;
+
+  &__item {
+    display: inline-block;
+    text-align: center;
+    height: 86px;
+
+    & i {
+      font-size: 50px;
+      color: #fff;
+      line-height: 86px;
+    }
+
+    &.active {
+      background-color: rgba(255,255,255, .3);
+    }
+  }
+}
+
+.app-view {
+  flex: 1;
+  background-color: #fff;
+  padding: 0 30px;
+}
+
+.app-header {
+  width: 100%;
+  padding: 20px 0;
+
+  &__logo {
+    width: 170px;
+  }
+
+  &__btns {
+    float: right;
+    margin-top: 2px;
+
+    & .btn {
+      margin-left: 20px;
+    }
+  }
+}
+
+.accordion {
+  display: block;
+
+  & .bucket-list {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &.open .bucket-list {
+    height: auto;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 0;
+
+    & i {
+      font-size: 30px;
+      position: relative;
+      top: 8px;
+      transform: rotate(-90deg);
+      transition: transform 0.1s;
+    }
+  }
+
+  &.open .accordion__title i {
+    transform: rotate(0deg);
+  }
+}
+

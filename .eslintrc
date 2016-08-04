@@ -1,0 +1,26 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint-config-airbnb",
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true,
+    "commonjs" : true,
+    "es6": true
+  },
+  "rules": {
+    "consistent-return": 0,
+    "comma-dangle": 0,
+    "no-use-before-define": 0,
+    "import/no-unresolved": [2, { "ignore": ['electron'] }],
+    "import/default": 0,
+    "import/no-duplicates": 0,
+    "import/named": 0,
+    "import/namespace": 0,
+    "import/no-named-as-default": 2
+  },
+  "plugins": [
+    "import",
+    "react"
+  ]
+}
