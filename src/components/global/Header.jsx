@@ -2,14 +2,14 @@ import React, { PropTypes } from 'react';
 
 const logo = require('../../img/logo.svg');
 
-const Header = ({ addItem, toggleTicketsTab }) => (
+const Header = ({ toggleTab }) => (
   <div className="app-header">
     <img className="app-header__logo" src={logo} role="presentation" />
     <div className="app-header__btns">
-      <button className="btn" onClick={addItem}>
+      <button className="btn" >
         <i className="material-icons">add</i> <span>Add Task</span>
       </button>
-      <button className="btn btn-secondary" onClick={toggleTicketsTab}>
+      <button className="btn btn-secondary" onClick={() => toggleTab('tickets')}>
         <i className="material-icons">dehaze</i> <span>Tickets</span>
       </button>
     </div>
@@ -17,8 +17,7 @@ const Header = ({ addItem, toggleTicketsTab }) => (
 );
 
 Header.propTypes = {
-  toggleTicketsTab: PropTypes.func.isRequired,
-  addItem: PropTypes.func.isRequired
+  toggleTab: PropTypes.func.isRequired
 };
 
 export default Header;

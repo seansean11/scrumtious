@@ -1,0 +1,5 @@
+@import '../../app.vars.css';
+
+.active-details .tab__details {
+  width: 480px;
+}

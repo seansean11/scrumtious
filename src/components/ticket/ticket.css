@@ -1,78 +1,12 @@
 @import '../../app.vars.css';
 
-.ticket-tab {
-  background: var(--gray_bg);
-  width: 0;
-  display: flex;
-  box-shadow: -1px 0 0 .5px rgba(0,0,0,.2);
-  flex-direction: column;
-  height: 100%;
-  transition: 0.1s width ease-out;
-  overflow: hidden;
-  position: relative;
-
-  @nest .app-body.active & {
-    width: 480px;
-  }
-}
-
-.ticket-header {
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--gray_dk);
-  flex: 0 0 auto;
-
-  & h1 {
-    margin: 0;
-    line-height: 1.4;
-    display: inline-block;
-  }
-}
-
-.ticket-close {
-  float: right;
-  cursor: pointer;
-  margin-top: 5px;
-  margin-right: 5px;
-  position: relative;
-
-  & i:before {
-    content: "close";
-    display: block;
-    background-color: var(--red_lt);
-    width: 38px;
-    height: 38px;
-    position: absolute;
-    top: 0;
-    left: 0px;
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(0);
-    transition: 0.3s transform cubic-bezier(0.37, 0.74, 0.15, 1.65), 0.3s opacity;
-  }
-
-  & i {
-    font-size: 38px;
-    color: var(--gray_dk);
-    transition: 0.3 color;
-    line-height: 38px;
-    text-align: center;
-  }
-
-  &:hover i {
-    color: #fff;
-    font-size: 32px;
-    margin-left: 6px;
-  }
-
-  &:hover i:before {
-    opacity: 1;
-    transform: scale(1);
-  }
+.active-tickets .tab__tickets {
+  width: 480px;
 }
 
 .ticket-list {
   padding: 0;
- 
+
   margin: 0;
   list-style-type: none;
   flex: 1 1 auto;

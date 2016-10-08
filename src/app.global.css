@@ -232,61 +232,68 @@ button {
   overflow: hidden;
   position: relative;
 
-  @nest .app-body.active & {
-    width: 480px;
-  }
-}
+  &__header {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--gray_dk);
+    flex: 0 0 auto;
 
-.tab-header {
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--gray_dk);
-  flex: 0 0 auto;
-
-  & h1 {
-    margin: 0;
-    line-height: 1.4;
-    display: inline-block;
-  }
-}
-
-.tab__close {
-  float: right;
-  cursor: pointer;
-  margin-top: 5px;
-  margin-right: 5px;
-  position: relative;
-
-  & i:before {
-    content: "close";
-    display: block;
-    background-color: var(--red_lt);
-    width: 38px;
-    height: 38px;
-    position: absolute;
-    top: 0;
-    left: 0px;
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(0);
-    transition: 0.3s transform cubic-bezier(0.37, 0.74, 0.15, 1.65), 0.3s opacity;
+    & h1 {
+      margin: 0;
+      line-height: 1.4;
+      display: inline-block;
+    }
   }
 
-  & i {
-    font-size: 38px;
-    color: var(--gray_dk);
-    transition: 0.3 color;
-    line-height: 38px;
+  &__footer {
+    flex: 0 0 auto;
+    border-top: 1px solid var(--gray_dk);
+    padding: 15px 0;
     text-align: center;
+
+    & .btn {
+      width: 200px;
+    }
   }
 
-  &:hover i {
-    color: #fff;
-    font-size: 32px;
-    margin-left: 6px;
-  }
+  &__close {
+    float: right;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-right: 5px;
+    position: relative;
 
-  &:hover i:before {
-    opacity: 1;
-    transform: scale(1);
+    & i:before {
+      content: "close";
+      display: block;
+      background-color: var(--red_lt);
+      width: 38px;
+      height: 38px;
+      position: absolute;
+      top: 0;
+      left: 0px;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.3s transform cubic-bezier(0.37, 0.74, 0.15, 1.65), 0.3s opacity;
+    }
+
+    & i {
+      font-size: 38px;
+      color: var(--gray_dk);
+      transition: 0.3 color;
+      line-height: 38px;
+      text-align: center;
+    }
+
+    &:hover i {
+      color: #fff;
+      font-size: 32px;
+      margin-left: 6px;
+    }
+
+    &:hover i:before {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }

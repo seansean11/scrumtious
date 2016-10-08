@@ -1,7 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as itemActions from '../../actions/itemActions';
+import React, { Component } from 'react';
 import TicketTab from '../ticket/TicketTab';
 import DetailTab from '../detail/DetailTab';
 import BucketList from './BucketList';
@@ -13,56 +10,37 @@ class BucketPage extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      ticketsTab: false,
-      detailsTab: false,
-      activeItem: null
+      activeTab: '',
+      activeItem: {}
     };
-    this.addItem = ::this.addItem;
-    this.toggleTicketsTab = ::this.toggleTicketsTab;
-    this.toggleItemState = ::this.toggleItemState;
-    this.toggleDetailsTab = ::this.toggleDetailsTab;
+
+    this.toggleTab = ::this.toggleTab;
   }
 
-  addItem(item) {
-    this.props.actions.itemAdd(item);
-  }
-
-  editItem(newItem) {
-    this.props.actions.itemEdit(newItem);
-  }
-
-  toggleDetailsTab(item) {
-    this.setState({ detailsTab: !this.state.detailsTab, activeItem: item });
-  }
-
-  toggleTicketsTab() {
-    this.setState({ ticketsTab: !this.state.ticketsTab });
-  }
-
-  toggleItemState(item) {
-    this.editItem(Object.assign(item, { done: !item.done }));
-    this.forceUpdate();
+  toggleTab(tabName) {
+    const newName = tabName === this.state.activeTab ? '' : tabName;
+    this.setState({ activeTab: newName });
   }
 
   render() {
-    const activeClass = this.state.ticketsTab ? 'app-body active' : 'app-body';
+    const appClass = this.state.activeTab.length ?
+      `app-body active-${this.state.activeTab}` :
+      'app-body';
+
     return (
-      <div className={activeClass}>
+      <div className={appClass}>
         <Navigation />
         <div className="app-view bucket-view">
           <Header
-            addItem={this.addItem}
-            toggleTicketsTab={this.toggleTicketsTab}
+            toggleTab={this.toggleTab}
           />
           <BucketList
-            items={this.props.items}
-            toggleItemState={this.toggleItemState}
-            toggleDetailsTab={this.toggleDetailsTab}
+            toggleTab={this.toggleTab}
           />
         </div>
-        <TicketTab toggleTicketsTab={this.toggleTicketsTab} />
+        <TicketTab toggleTab={this.toggleTab} />
         <DetailTab
-          toggleDetailsTab={this.toggleTicketsTab}
+          toggleTab={this.toggleTab}
           activeItem={this.state.activeItem}
         />
       </div>
@@ -70,21 +48,4 @@ class BucketPage extends Component {
   }
 }
 
-BucketPage.propTypes = {
-  actions: PropTypes.object.isRequired,
-  items: PropTypes.array.isRequired
-};
-
-function mapStateToProps(state) {
-  return {
-    items: state.items
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(itemActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BucketPage);
+export default BucketPage;

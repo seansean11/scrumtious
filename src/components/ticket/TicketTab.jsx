@@ -21,9 +21,9 @@ class TicketTab extends Component {
   }
 
   submitTickets() {
-    this.props.actions.todosAdd(this.state.activeTickets);
+    this.props.actions.itemsAdd(this.state.activeTickets);
     this.setState({ activeTickets: [] });
-    this.props.toggleTicketsTab();
+    this.props.toggleTab('tickets');
   }
 
   toggleTicket(ticket) {
@@ -46,13 +46,13 @@ class TicketTab extends Component {
 
   render() {
     return (
-      <div className="tab">
+      <div className="tab tab__tickets">
         <header className="tab__header">
           <h1>Add Tickets</h1>
           <a
-            href=""
+            type="button"
             className="tab__close"
-            onClick={this.props.toggleTicketsTab}
+            onClick={() => this.props.toggleTab('tickets')}
           >
             <i className="material-icons">close</i>
           </a>
@@ -73,7 +73,7 @@ class TicketTab extends Component {
 TicketTab.propTypes = {
   actions: PropTypes.object.isRequired,
   tickets: PropTypes.object.isRequired,
-  toggleTicketsTab: PropTypes.func.isRequired
+  toggleTab: PropTypes.func.isRequired
 };
 
 TicketTab.contextTypes = {
