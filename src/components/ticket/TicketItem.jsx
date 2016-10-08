@@ -3,9 +3,7 @@ import marked from 'marked';
 
 class TicketItem extends Component {
   buildDescription() {
-    return marked(this.props.ticket.fields.description, (err, content) => {
-      return { __html: content };
-    });
+    return marked(this.props.ticket.fields.description, (err, content) => { __html: content });
   }
 
   render() {
@@ -17,7 +15,7 @@ class TicketItem extends Component {
     return (
       <li className={ticketClass} onClick={() => toggleTicket(ticket)}>
         <h3 className="ticket-list__title">{ticket.key}:</h3>
-        <span className="ticket-list__active"></span>
+        <span className="ticket-list__active" />
         <div className="ticket-list__summary">
           <p>{ticket.fields.summary}</p>
           {/* <span dangerouslySetInnerHTML={buildDescription()} /> */}
@@ -25,7 +23,7 @@ class TicketItem extends Component {
       </li>
     );
   }
-};
+}
 
 TicketItem.propTypes = {
   ticket: PropTypes.object.isRequired,

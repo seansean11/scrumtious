@@ -2,17 +2,17 @@
 
 .ticket-tab {
   background: var(--gray_bg);
-  position: fixed;
-  top: 0; right: 0;
-  width: 400px;
+  width: 0;
   display: flex;
+  box-shadow: -1px 0 0 .5px rgba(0,0,0,.2);
   flex-direction: column;
   height: 100%;
-  transform: translateX(400px);
-  transition: 0.2s transform ease-out;
+  transition: 0.1s width ease-out;
+  overflow: hidden;
+  position: relative;
 
   @nest .app-body.active & {
-    transform: translateX(0);
+    width: 480px;
   }
 }
 
@@ -72,6 +72,7 @@
 
 .ticket-list {
   padding: 0;
+ 
   margin: 0;
   list-style-type: none;
   flex: 1 1 auto;
@@ -91,10 +92,15 @@
     &.active .ticket-list__active {
       background-color: var(--green_lt);
       border-color: var(--green_lt);
+      background-image: radial-gradient(ellipse, var(--green_lt), var(--green_lt));
 
       &:before {
         transform: scale(1);
       }
+    }
+
+    &:hover {
+      background-color: var(--blue_hover);
     }
 
     &:hover .ticket-list__active {

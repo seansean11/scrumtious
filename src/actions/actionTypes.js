@@ -8,9 +8,7 @@ export const TICKETS_REQUEST = 'TICKETS_REQUEST';
 export const TICKETS_SUCCESS = 'TICKETS_SUCCESS';
 export const TICKETS_FAILURE = 'TICKETS_FAILURE';
 
-export const TODO_EDIT = 'TODO_EDIT';
-export const TODOS_ADD = 'TODOS_ADD';
-export const TODO_ADD = 'TODO_ADD';
-export const TODOS_DELETE = 'TODO_DELETE';
-
+export const ITEM_EDIT = 'ITEM_EDIT';
+export const ITEM_ADD = 'ITEM_ADD';
+export const ITEM_DELETE = 'ITEM_DELETE';
 

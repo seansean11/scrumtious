@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TicketList from './TicketList';
 import * as ticketActions from '../../actions/ticketActions';
-import * as todoActions from '../../actions/todoActions';
+import * as itemActions from '../../actions/itemActions';
 import './ticket.css';
 
 class TicketTab extends Component {
@@ -40,25 +40,29 @@ class TicketTab extends Component {
   }
 
   isActiveTicket(ticket) {
-    const activeTicket = this.state.activeTickets.filter((item) => item.id === ticket.id);
+    const activeTicket = this.state.activeTickets.filter(item => item.id === ticket.id);
     return activeTicket.length > 0;
   }
 
   render() {
     return (
-      <div className="ticket-tab">
-        <header className="ticket-header">
+      <div className="tab">
+        <header className="tab__header">
           <h1>Add Tickets</h1>
-          <span className="ticket-close" onClick={this.props.toggleTicketsTab}>
+          <a
+            href=""
+            className="tab__close"
+            onClick={this.props.toggleTicketsTab}
+          >
             <i className="material-icons">close</i>
-          </span>
+          </a>
         </header>
         <TicketList
           tickets={this.props.tickets}
           toggleTicket={this.toggleTicket}
           isActiveTicket={this.isActiveTicket}
         />
-        <footer className="ticket-footer">
+        <footer className="tab__footer">
           <button className="btn" onClick={this.submitTickets}>Add Tickets</button>
         </footer>
       </div>
@@ -84,7 +88,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, ticketActions, todoActions), dispatch)
+    actions: bindActionCreators(Object.assign({}, ticketActions, itemActions), dispatch)
   };
 }
 

@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as todoActions from '../../actions/todoActions';
+import * as itemActions from '../../actions/itemActions';
 import TicketTab from '../ticket/TicketTab';
+import DetailTab from '../detail/DetailTab';
 import BucketList from './BucketList';
 import Header from '../global/Header';
 import Navigation from '../global/Navigation';
@@ -11,22 +12,35 @@ import './bucket.css';
 class BucketPage extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { ticketsTab: false };
-    this.addTodo = ::this.addTodo;
+    this.state = {
+      ticketsTab: false,
+      detailsTab: false,
+      activeItem: null
+    };
+    this.addItem = ::this.addItem;
     this.toggleTicketsTab = ::this.toggleTicketsTab;
-    this.toggleTodoState = ::this.toggleTodoState;
+    this.toggleItemState = ::this.toggleItemState;
+    this.toggleDetailsTab = ::this.toggleDetailsTab;
   }
 
-  addTodo(todo) {
-    this.props.actions.addTodo(todo);
+  addItem(item) {
+    this.props.actions.itemAdd(item);
+  }
+
+  editItem(newItem) {
+    this.props.actions.itemEdit(newItem);
+  }
+
+  toggleDetailsTab(item) {
+    this.setState({ detailsTab: !this.state.detailsTab, activeItem: item });
   }
 
   toggleTicketsTab() {
     this.setState({ ticketsTab: !this.state.ticketsTab });
   }
 
-  toggleTodoState(todo) {
-    this.props.actions.todoEdit(Object.assign(todo, { done: !todo.done }));
+  toggleItemState(item) {
+    this.editItem(Object.assign(item, { done: !item.done }));
     this.forceUpdate();
   }
 
@@ -37,12 +51,20 @@ class BucketPage extends Component {
         <Navigation />
         <div className="app-view bucket-view">
           <Header
-            addTodo={this.addTodo}
+            addItem={this.addItem}
             toggleTicketsTab={this.toggleTicketsTab}
           />
-          <BucketList todos={this.props.todos} toggleTodoState={this.toggleTodoState} />
+          <BucketList
+            items={this.props.items}
+            toggleItemState={this.toggleItemState}
+            toggleDetailsTab={this.toggleDetailsTab}
+          />
         </div>
         <TicketTab toggleTicketsTab={this.toggleTicketsTab} />
+        <DetailTab
+          toggleDetailsTab={this.toggleTicketsTab}
+          activeItem={this.state.activeItem}
+        />
       </div>
     );
   }
@@ -50,18 +72,18 @@ class BucketPage extends Component {
 
 BucketPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  todos: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    items: state.items
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(todoActions, dispatch)
+    actions: bindActionCreators(itemActions, dispatch)
   };
 }
 

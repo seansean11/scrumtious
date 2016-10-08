@@ -7,6 +7,10 @@
   &__item {
     border-bottom: 1px solid var(--gray_lt);
     padding: 15px;
+
+    &:hover {
+      background-color: var(--blue_hover);
+    }
   }
 
   &__title {
@@ -20,6 +24,10 @@
     margin: 0;
     font-size: 14px;
     color: var(--font_lt);
+  }
+
+  &__summary {
+    overflow: hidden;
   }
 
   &__state {

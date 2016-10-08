@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": "eslint-config-airbnb",
+  "extends": "airbnb",
   "env": {
     "browser": true,
     "mocha": true,
@@ -11,6 +11,7 @@
   "rules": {
     "consistent-return": 0,
     "comma-dangle": 0,
+		"react/forbid-prop-types": 0,
     "no-use-before-define": 0,
     "import/no-unresolved": [2, { "ignore": ['electron'] }],
     "import/default": 0,

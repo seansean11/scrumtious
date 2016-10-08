@@ -21,7 +21,6 @@ class LoginPage extends Component {
     this.props.actions.loginUser(creds, this.context.router);
   }
 
-
   render() {
     const { errorMessage } = this.props;
     return (
