@@ -12,13 +12,14 @@
     "consistent-return": 0,
     "comma-dangle": 0,
 		"react/forbid-prop-types": 0,
+    "arrow-parens": 0,
     "no-use-before-define": 0,
-    "import/no-unresolved": [2, { "ignore": ['electron'] }],
+    "import/no-unresolved": [2, { "ignore": ["electron"] }],
     "import/default": 0,
     "import/no-duplicates": 0,
     "import/named": 0,
     "import/namespace": 0,
-    "import/no-named-as-default": 2
+    "import/no-named-as-default": 2,
   },
   "plugins": [
     "import",

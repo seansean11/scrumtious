@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as itemActions from '../../actions/itemActions';
+import * as activeItemActions from '../../actions/activeItemActions';
 import BucketItem from './BucketItem';
 import Accordion from '../global/Accordion';
 
@@ -9,26 +10,26 @@ class BucketList extends Component {
   constructor(props, context) {
     super(props, context);
     this.toggleItemState = ::this.toggleItemState;
-    this.editItem = ::this.editItem;
-  }
-  editItem(newItem) {
-    this.props.actions.itemEdit(newItem);
   }
 
   toggleItemState(item) {
-    this.editItem(Object.assign(item, { done: !item.done }));
-    this.forceUpdate();
+    this.props.actions.itemEdit(Object.assign(item, { done: !item.done }));
+  }
+
+  activateItem(item) {
+    this.props.activateItem(Object.assign(item, { active: !item.done }));
+    this.props.toggleTab('details');
   }
 
   render() {
     return (
       <Accordion title="Running">
         <ul className="bucket-list">
-          {this.props.items.map(item =>
+          {this.props.items.map((item, i) =>
             <BucketItem
-              key={item.id}
+              key={i}
               item={item}
-              toggleTab={this.props.toggleTab}
+              activateItem={this.activateItem}
               toggleItemState={this.toggleItemState}
             />
           )}

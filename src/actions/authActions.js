@@ -28,7 +28,7 @@ function loginFailure(errorMessage) {
   };
 }
 
-function requestLogout() {
+function logoutRequest() {
   return {
     type: types.LOGOUT_REQUEST,
     isFetching: true,
@@ -36,7 +36,7 @@ function requestLogout() {
   };
 }
 
-function receiveLogout() {
+function logoutSuccess() {
   return {
     type: types.LOGOUT_SUCCESS,
     isFetching: false,

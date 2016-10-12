@@ -2,7 +2,7 @@
 
 import * as types from '../actions/actionTypes';
 
-export default function items(state = [], action) {
+export function items(state = [], action) {
   switch (action.type) {
     case types.ITEMS_ADD:
       return [
@@ -12,21 +12,23 @@ export default function items(state = [], action) {
         ...state
       ];
     case types.ITEM_ADD:
-      return Object.assign({}, state, [
-        ...items,
+      return [
+        ...state,
         action.item
-      ]);
-    case types.ITEMS_DELETE:
-      return Object.assign({}, state, {
-        items: []
-      });
-    case types.ITEMS_EDIT:
+      ];
+    case types.ITEM_DELETE:
+      return state.filter(item =>
+        item.id !== action.id
+      );
+    case types.ITEM_EDIT:
       return state.map(item =>
         item.id === action.item.id ?
-          Object.assign({}, item, action.item) :
+          action.item :
           item
       );
     default:
       return state;
   }
 }
+
+export function activeItem(state = )

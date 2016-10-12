@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import TicketTab from '../ticket/TicketTab';
 import DetailTab from '../detail/DetailTab';
 import BucketList from './BucketList';
@@ -11,7 +11,6 @@ class BucketPage extends Component {
     super(props, context);
     this.state = {
       activeTab: '',
-      activeItem: {}
     };
 
     this.toggleTab = ::this.toggleTab;
@@ -39,13 +38,14 @@ class BucketPage extends Component {
           />
         </div>
         <TicketTab toggleTab={this.toggleTab} />
-        <DetailTab
-          toggleTab={this.toggleTab}
-          activeItem={this.state.activeItem}
-        />
+        <DetailTab toggleTab={this.toggleTab} />
       </div>
     );
   }
 }
+
+BucketPage.propTypes = {
+  children: PropTypes.object
+};
 
 export default BucketPage;

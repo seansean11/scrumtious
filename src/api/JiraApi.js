@@ -35,9 +35,8 @@ class JiraApi {
         } else {
           if (error) {
             return reject(error);
-          } else {
-            reject('Status Code:', response.statusCode);
           }
+          return reject('Status Code:', response.statusCode);
         }
       });
     });
@@ -61,10 +60,9 @@ class JiraApi {
           resolve(JSON.parse(body));
         } else {
           if (error) {
-            reject(error);
-          } else {
-            reject('Status Code:', response.statusCode);
+            return reject(error);
           }
+          return reject('Status Code:', response.statusCode);
         }
       });
     });
