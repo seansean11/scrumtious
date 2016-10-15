@@ -6,19 +6,12 @@
 
 .ticket-list {
   padding: 0;
-
   margin: 0;
   list-style-type: none;
   flex: 1 1 auto;
   overflow-y: auto;
 
   &__item {
-    background-color: #fff;
-    margin: 4px 5px;
-    border-bottom: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    padding: 8px 12px 12px;
     height: 100px;
     cursor: pointer;
     box-shadow: 0 1px 0 .5px rgba(0,0,0,.15);

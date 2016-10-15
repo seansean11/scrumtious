@@ -36,3 +36,9 @@ export function itemMove(indexOld, indexNew) {
   };
 }
 
+export function itemActivate(item) {
+  return {
+    type: types.ITEM_ACTIVATE,
+    item
+  };
+}

@@ -67,6 +67,10 @@ class JiraApi {
       });
     });
   }
+
+  static saveAvatars() {
+
+  }
 }
 
 export default JiraApi;

@@ -1,48 +1,51 @@
 import React, { Component, PropTypes } from 'react';
 import DetailTodo from './DetailTodo';
-import DetailTicket from './DetailTicket';
+import * as itemActions from '../../actions/itemActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './detail.css';
 
 class DetailTab extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.setState({
-      activeItem: this.props.items[this.props.params.itemId]
-    });
+  constructor(context, props) {
+    super(context, props);
+    this.editItem = ::this.editItem;
   }
 
-  submitItem() {
-    this.props.toggleTab('details');
-  }
-
-  toggleDetialsTab(selectedItem) {
-    this.props.toggleTab('details');
+  editItem(html) {
+    console.log(html.target.innerHTML);
   }
 
   render() {
     return (
       <div className="tab tab__details">
-        <header className="tab__header">
-          <button
-            className="tab__close"
-            onClick={() => this.props.toggleTab('details')}
-          >
-            <i className="material-icons">close</i>
-          </button>
-        </header>
-        {true ?
-          <DetailTodo activeItem="this.props.activeItem" /> :
-          <DetailTicket activeItem="this.props.activeItem" />
-        }
+        {(this.props.activeItem !== {}) ?
+          <DetailTodo
+            activeItem={this.props.activeItem}
+            toggleTab={this.props.toggleTab}
+            editItem={this.editItem}
+          />
+      : ''}
       </div>
     );
   }
 }
 
 DetailTab.propTypes = {
+  actions: PropTypes.object.isRequired,
+  activeItem: PropTypes.object.isRequired,
   toggleTab: PropTypes.func.isRequired
 };
 
-export default DetailTab;
+function mapStateToProps(state) {
+  return {
+    activeItem: state.activeItem
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(itemActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailTab);

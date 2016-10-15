@@ -21,6 +21,7 @@
   "author": "Sean Michael",
   "homepage": "https://seanmichael.me",
   "devDependencies": {
+    "ava": "^0.16.0",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.2",
@@ -35,6 +36,7 @@
     "electron-devtools-installer": "^2.0.0",
     "electron-packager": "^7.2.0",
     "electron-prebuilt": "^1.2.0",
+    "enzyme": "^2.4.1",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^2.0.0",
@@ -46,6 +48,7 @@
     "postcss-cssnext": "^2.7.0",
     "postcss-import": "^8.1.2",
     "postcss-loader": "^0.9.1",
+    "react-addons-test-utils": "^15.3.2",
     "redux-devtools": "^3.3.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
@@ -56,14 +59,17 @@
   "dependencies": {
     "electron-compile": "^3.3.5",
     "electron-debug": "^1.0.1",
+    "electron-prebuilt": "^1.4.3",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
     "knex": "^0.11.9",
-    "lodash": "^4.14.1",
     "marked": "^0.3.5",
     "material-design-icons": "^2.2.3",
     "react": "^15.2.1",
+    "react-contenteditable": "^2.0.1",
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
-    "react-dom": "^15.2.1",
+    "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.2",
     "react-router-redux": "^4.0.5",
@@ -72,6 +78,8 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "request": "^2.65.0",
-    "sqlite3": "^3.1.4"
+    "sqlite3": "^3.1.6",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.0"
   }
 }

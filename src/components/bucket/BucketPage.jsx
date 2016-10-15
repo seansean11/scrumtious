@@ -35,6 +35,7 @@ class BucketPage extends Component {
           />
           <BucketList
             toggleTab={this.toggleTab}
+            activeTab={this.state.activeTab}
           />
         </div>
         <TicketTab toggleTab={this.toggleTab} />

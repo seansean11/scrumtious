@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const BucketItem = ({ item, toggleItemState, activateItem }) => {
+const BucketItem = ({ item, toggleItemState, itemActivate }) => {
   const itemClass = item.done ?
                       'bucket-list__item done' :
                       'bucket-list__item';
@@ -12,7 +12,7 @@ const BucketItem = ({ item, toggleItemState, activateItem }) => {
       >done</a>
       <a
         className="bucket-list__body"
-        onClick={() => activateItem(item)}
+        onClick={() => itemActivate(item)}
       >
         <h3 className="bucket-list__title">{item.key}</h3>
         <div className="bucket-list__summary">
@@ -26,7 +26,7 @@ const BucketItem = ({ item, toggleItemState, activateItem }) => {
 BucketItem.propTypes = {
   item: PropTypes.object.isRequired,
   toggleItemState: PropTypes.func.isRequired,
-  activateItem: PropTypes.func.isRequired
+  itemActivate: PropTypes.func.isRequired
 };
 
 export default BucketItem;

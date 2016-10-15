@@ -1,4 +1,4 @@
-import JiraApi from '../api/JiraApi';
+import JiraApi from '../services/JiraApi';
 import * as types from './actionTypes';
 
 function ticketsRequest(username) {

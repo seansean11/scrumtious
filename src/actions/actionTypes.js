@@ -12,3 +12,4 @@ export const ITEM_EDIT = 'ITEM_EDIT';
 export const ITEM_ADD = 'ITEM_ADD';
 export const ITEMS_ADD = 'ITEMS_ADD';
 export const ITEM_DELETE = 'ITEM_DELETE';
+export const ITEM_ACTIVATE = 'ITEM_ACTIVATE';

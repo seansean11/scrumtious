@@ -3,3 +3,20 @@
 .active-details .tab__details {
   width: 480px;
 }
+
+.tab__avatar {
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  & .user-avatar {
+    width: 36px;
+    height: 36px;
+    margin-right: 5px;
+  }
+}
+
+.tab_body {
+  padding: 0 20px;
+}

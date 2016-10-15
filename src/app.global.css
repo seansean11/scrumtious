@@ -95,6 +95,12 @@ button {
   margin-top: 4px;
 }
 
+.txt-sm {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2;
+}
+
 .btn {
   font-size: 14px;
   display: inline-block;
@@ -243,6 +249,11 @@ button {
     border-bottom: 1px solid var(--gray_dk);
     flex: 0 0 auto;
 
+    & > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     & h1 {
       margin: 0;
       line-height: 1.4;
@@ -264,8 +275,6 @@ button {
   &__close {
     float: right;
     cursor: pointer;
-    margin-top: 5px;
-    margin-right: 5px;
     position: relative;
 
     & i:before {
@@ -302,4 +311,18 @@ button {
       transform: scale(1);
     }
   }
+}
+
+.card {
+  background-color: #fff;
+  margin: 4px 5px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 8px 12px 12px;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  border: 2px solid #fff;
 }
