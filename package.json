@@ -63,6 +63,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
     "knex": "^0.11.9",
+    "lodash": "^4.16.4",
     "marked": "^0.3.5",
     "material-design-icons": "^2.2.3",
     "react": "^15.2.1",

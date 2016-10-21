@@ -3,7 +3,7 @@ import TicketItem from './TicketItem';
 
 const TicketList = ({ tickets, toggleTicket, isActiveTicket }) => (
   <ul className="ticket-list">
-    {tickets.tickets.map(ticket =>
+    {tickets.map(ticket =>
       <TicketItem
         key={ticket.id}
         ticket={ticket}
@@ -14,7 +14,7 @@ const TicketList = ({ tickets, toggleTicket, isActiveTicket }) => (
 );
 
 TicketList.propTypes = {
-  tickets: PropTypes.object.isRequired,
+  tickets: PropTypes.array.isRequired,
   toggleTicket: PropTypes.func.isRequired,
   isActiveTicket: PropTypes.func.isRequired
 };

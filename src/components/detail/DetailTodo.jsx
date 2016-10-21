@@ -3,19 +3,20 @@ import marked from 'marked';
 
 class DetailTodo extends Component {
   markdownToHTML() {
-    return { __html: marked(this.props.activeItem.description) };
+    return (this.props.activeItem.description) ?
+      { __html: marked(this.props.activeItem.description) } :
+      { __html: '' };
   }
 
   render() {
     const { activeItem, toggleTab, editItem } = this.props;
-    const creator = activeItem.fields ? activeItem.fields.creator : '';
 
     return (
       <div className="tab__todo card">
         <header className="tab__header">
           <div className="tab__avatar">
-            <img className="user-avatar" src={creator.avatarUrls['48x48']} alt="creator avatar"/>
-            <span className="txt-sm">{creator.displayName}</span>
+            <img className="user-avatar" src={activeItem.avatar_xl} alt="creator avatar"/>
+            <span className="txt-sm">{activeItem.displayName}</span>
           </div>
           <a
             className="tab__close"
@@ -32,7 +33,7 @@ class DetailTodo extends Component {
           <h4
             onChange={(activeItem) => editItem(activeItem)}
             contentEditable="true"
-          >{activeItem.fields.summary}</h4>
+          >{activeItem.summary}</h4>
           <p
             onChange={(activeItem) => editItem(activeItem)}
             contentEditable="true"

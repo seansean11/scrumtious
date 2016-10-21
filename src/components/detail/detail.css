@@ -17,6 +17,7 @@
   }
 }
 
-.tab_body {
-  padding: 0 20px;
+.tab__todo {
+  transition: height 0.2s;
 }
+

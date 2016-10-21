@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+
 import TicketList from './TicketList';
 import * as ticketActions from '../../actions/ticketActions';
 import * as itemActions from '../../actions/itemActions';
@@ -9,42 +11,37 @@ import './ticket.css';
 class TicketTab extends Component {
   constructor(props, context) {
     super(props, context);
-    this.props.actions.getUserTickets();
-    setInterval(() => {
-      this.props.actions.getUserTickets();
-    }, 60000);
 
-    this.state = { activeTickets: [] };
+    this.props.actions.getUserTickets();
+    setInterval(() => this.props.actions.getUserTickets(), 60000);
+
     this.toggleTicket = ::this.toggleTicket;
     this.submitTickets = ::this.submitTickets;
     this.isActiveTicket = ::this.isActiveTicket;
   }
 
   submitTickets() {
-    this.props.actions.itemsAdd(this.state.activeTickets);
-    this.setState({ activeTickets: [] });
+    this.props.actions.itemsAdd(this.props.activeTickets);
+    this.props.actions.ticketsDeactivateAll();
     this.props.toggleTab('tickets');
   }
 
   toggleTicket(ticket) {
     if (!this.isActiveTicket(ticket)) {
-      this.setState({ activeTickets: [...this.state.activeTickets, ticket] });
+      this.props.actions.ticketsActivate(ticket);
     } else {
-      this.state.activeTickets.forEach((item, i) => {
-        if (item.id === ticket.id) {
-          this.setState({ activeTickets: [...this.state.activeTickets.slice(0, i),
-                                            ...this.state.activeTickets.slice(i + 1)] });
-        }
-      });
+      this.props.actions.ticketsDeactivate(ticket);
     }
   }
 
   isActiveTicket(ticket) {
-    const activeTicket = this.state.activeTickets.filter(item => item.id === ticket.id);
+    const activeTicket = this.props.activeTickets.filter(active => active.id === ticket.id);
     return activeTicket.length > 0;
   }
 
   render() {
+    const filteredTickets = _.differenceBy(this.props.tickets.tickets, this.props.items, 'id');
+
     return (
       <div className="tab tab__tickets">
         <header className="tab__header">
@@ -58,7 +55,7 @@ class TicketTab extends Component {
           </a>
         </header>
         <TicketList
-          tickets={this.props.tickets}
+          tickets={filteredTickets}
           toggleTicket={this.toggleTicket}
           isActiveTicket={this.isActiveTicket}
         />
@@ -73,6 +70,8 @@ class TicketTab extends Component {
 TicketTab.propTypes = {
   actions: PropTypes.object.isRequired,
   tickets: PropTypes.object.isRequired,
+  activeTickets: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
   toggleTab: PropTypes.func.isRequired
 };
 
@@ -82,7 +81,9 @@ TicketTab.contextTypes = {
 
 function mapStateToProps(state) {
   return {
-    tickets: state.tickets
+    tickets: state.tickets,
+    activeTickets: state.activeTickets,
+    items: state.items
   };
 }
 

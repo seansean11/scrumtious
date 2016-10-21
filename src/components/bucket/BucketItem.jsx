@@ -16,7 +16,7 @@ const BucketItem = ({ item, toggleItemState, itemActivate }) => {
       >
         <h3 className="bucket-list__title">{item.key}</h3>
         <div className="bucket-list__summary">
-          <p>{item.fields.summary}</p>
+          <p>{item.summary}</p>
         </div>
       </a>
     </li>

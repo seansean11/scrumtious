@@ -42,3 +42,23 @@ export function getUserTickets() {
     };
   }
 }
+
+export function ticketsActivate(ticket) {
+  return {
+    type: types.TICKETS_ACTIVATE,
+    ticket
+  };
+}
+
+export function ticketsDeactivate(ticket) {
+  return {
+    type: types.TICKETS_DEACTIVATE,
+    ticket
+  };
+}
+
+export function ticketsDeactivateAll() {
+  return {
+    type: types.TICKETS_DEACTIVATE_ALL
+  };
+}

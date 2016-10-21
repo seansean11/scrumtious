@@ -10,7 +10,7 @@ const TicketItem = ({ ticket, toggleTicket, isActiveTicket }) => {
       <h3 className="ticket-list__title">{ticket.key}:</h3>
       <span className="ticket-list__active" />
       <div className="ticket-list__summary">
-        <p>{ticket.fields.summary}</p>
+        <p>{ticket.summary}</p>
       </div>
     </li>
   );
