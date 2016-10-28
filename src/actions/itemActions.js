@@ -28,11 +28,11 @@ export function itemEdit(item) {
   };
 }
 
-export function itemMove(indexOld, indexNew) {
+export function itemMove(fromIndex, toIndex) {
   return {
     type: types.ITEM_MOVE,
-    indexOld,
-    indexNew
+    fromIndex,
+    toIndex
   };
 }
 

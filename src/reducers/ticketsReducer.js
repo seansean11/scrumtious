@@ -1,18 +1,5 @@
 import * as types from '../actions/actionTypes';
-
-function normalizeTicket(ticket) {
-  return {
-    id: ticket.id || '',
-    key: ticket.key || '',
-    description: ticket.fields.description || '',
-    summary: ticket.fields.summary || '',
-    displayName: ticket.fields.creator.displayName || '',
-    avatar_sm: ticket.fields.creator.avatarUrls['16x16'] || '',
-    avatar_md: ticket.fields.creator.avatarUrls['24x24'] || '',
-    avatar_lg: ticket.fields.creator.avatarUrls['32x32'] || '',
-    avatar_xl: ticket.fields.creator.avatarUrls['48x48'] || ''
-  };
-}
+import { createItem } from '../services/normalizeData';
 
 export function tickets(state = { tickets: [] }, action) {
   switch (action.type) {
@@ -24,7 +11,7 @@ export function tickets(state = { tickets: [] }, action) {
     case types.TICKETS_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        tickets: action.tickets.map(ticket => normalizeTicket(ticket))
+        tickets: action.tickets.map(ticket => createItem(ticket))
       });
     case types.TICKETS_FAILURE:
       return Object.assign({}, state, {

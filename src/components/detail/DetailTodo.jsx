@@ -25,19 +25,22 @@ class DetailTodo extends Component {
             <i className="material-icons">close</i>
           </a>
         </header>
-        <div className="tab_body">
+        <div className="tab__body todo">
           <h2
+            className="todo__title"
             onInput={editItem}
             contentEditable="true"
           >{activeItem.key}</h2>
           <h4
+            className="todo__summary"
             onChange={(activeItem) => editItem(activeItem)}
             contentEditable="true"
           >{activeItem.summary}</h4>
           <p
+            className="todo__discription"
             onChange={(activeItem) => editItem(activeItem)}
-            contentEditable="true"
             dangerouslySetInnerHTML={this.markdownToHTML()}
+            contentEditable="true"
           />
         </div>
       </div>

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
-import routes from './routes';
+import getRoutes from './routes';
 import './app.global.css';
 
 const hydrate = localStorage.getItem('state') || null;
@@ -14,7 +14,9 @@ const history = syncHistoryWithStore(hashHistory, store);
 
 render(
   <Provider store={store}>
-    <Router history={history} routes={routes} router={Router} />
+    <Router history={history} router={Router}>
+      { getRoutes(store) }
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

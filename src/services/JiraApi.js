@@ -28,6 +28,7 @@ class JiraApi {
           const session = {
             username: creds.username,
             domain: creds.domain,
+            avatar: `https://${creds.domain}/rest/api/latest/user?username=${creds.username}`,
             cookies: response.headers['set-cookie'],
             session_id: body.session
           };

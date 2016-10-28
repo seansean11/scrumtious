@@ -168,6 +168,7 @@ button {
   flex: 1;
   background-color: #fff;
   padding: 0 30px;
+  overflow-y: auto;
 }
 
 .app-header {
@@ -244,9 +245,15 @@ button {
   overflow: hidden;
   position: relative;
 
+  &__body {
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px 15px;
+  }
+
   &__header {
-    padding: 10px 20px;
-    border-bottom: 1px solid var(--gray_dk);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--gray_lt);
     flex: 0 0 auto;
 
     & > * {
@@ -256,7 +263,7 @@ button {
 
     & h1 {
       margin: 0;
-      line-height: 1.4;
+      line-height: 1.3;
       display: inline-block;
     }
   }
@@ -315,14 +322,23 @@ button {
 
 .card {
   background-color: #fff;
-  margin: 4px 5px;
-  border-bottom: 1px solid #ddd;
+  margin: 6px;
   border-radius: 4px;
   overflow: hidden;
   padding: 8px 12px 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
+
+  &.tab__todo {
+    padding: 0;
+  }
 }
 
 .user-avatar {
   border-radius: 50%;
   border: 2px solid #fff;
+}
+
+.icon-drag {
+  width: 20px;
+  height: 28px;
 }

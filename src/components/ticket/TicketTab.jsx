@@ -12,12 +12,14 @@ class TicketTab extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.props.actions.getUserTickets();
-    setInterval(() => this.props.actions.getUserTickets(), 60000);
-
     this.toggleTicket = ::this.toggleTicket;
     this.submitTickets = ::this.submitTickets;
     this.isActiveTicket = ::this.isActiveTicket;
+  }
+
+  componentWillMount() {
+    this.props.actions.getUserTickets(this.props.auth.user);
+    setInterval(() => this.props.actions.getUserTickets(this.props.auth.user), 60000);
   }
 
   submitTickets() {
@@ -72,7 +74,8 @@ TicketTab.propTypes = {
   tickets: PropTypes.object.isRequired,
   activeTickets: PropTypes.array.isRequired,
   items: PropTypes.array.isRequired,
-  toggleTab: PropTypes.func.isRequired
+  toggleTab: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 TicketTab.contextTypes = {
@@ -83,7 +86,8 @@ function mapStateToProps(state) {
   return {
     tickets: state.tickets,
     activeTickets: state.activeTickets,
-    items: state.items
+    items: state.items,
+    auth: state.auth
   };
 }
 

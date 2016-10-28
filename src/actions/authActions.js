@@ -1,21 +1,21 @@
 import JiraApi from '../services/JiraApi';
 import * as types from './actionTypes';
 
-function loginRequest(creds) {
+function loginRequest() {
   return {
     type: types.LOGIN_REQUEST,
     isFetching: true,
-    isAuthenticated: false,
-    creds
+    isAuthenticated: false
   };
 }
 
-function loginSuccess() {
+function loginSuccess(user) {
   return {
     type: types.LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    errorMessage: false
+    errorMessage: false,
+    user
   };
 }
 
@@ -50,13 +50,8 @@ export function loginUser(creds, router) {
     dispatch(loginRequest(creds));
 
     return JiraApi.login(creds)
-      .then(response => {
-        localStorage.setItem('session', JSON.stringify(response));
-        dispatch(loginSuccess(response));
-        router.push('/');
-      })
-      .catch(err => {
-        dispatch(loginFailure(err));
-      });
+      .then()
+      .then(() => router.push('/'))
+      .catch(err => dispatch(loginFailure(err)));
   };
 }

@@ -25,10 +25,8 @@ function ticketsFailure(errorMessage) {
   };
 }
 
-export function getUserTickets() {
-  const session = JSON.parse(localStorage.getItem('session'));
-
-  if (session) {
+export function getUserTickets(session) {
+  if (session.isAuthenticated) {
     return dispatch => {
       dispatch(ticketsRequest(session.username));
 

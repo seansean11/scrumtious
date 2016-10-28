@@ -22,6 +22,10 @@ export function items(state = [], action) {
           action.item :
           item)
       );
+    case types.ITEM_MOVE: // eslint-disable-line no-case-declarations
+      const newState = [].concat(state);
+      newState.splice(action.toIndex, 0, newState.splice(action.fromIndex, 1)[0]);
+      return newState;
     default:
       return state;
   }

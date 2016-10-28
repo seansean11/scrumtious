@@ -9,9 +9,7 @@ import './bucket.css';
 class BucketPage extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      activeTab: '',
-    };
+    this.state = { activeTab: '' };
 
     this.toggleTab = ::this.toggleTab;
   }

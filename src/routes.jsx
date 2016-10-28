@@ -7,21 +7,23 @@ import { remote } from 'electron';
 
 const win = remote.getCurrentWindow();
 
-function requireAuth(nextState, replace) {
-  const session = !!localStorage.getItem('session');
+export default (store) => {
+  function requireAuth(nextState, replace) {
+    const state = store.getState();
 
-  if (!session) {
-    replace('/login');
-    win.setSize(555, 535, true);
-  } else {
-    win.setSize(1000, 800, true);
+    if (!state.auth.isAuthenticated) {
+      console.log(store);
+      replace('/login');
+      win.setSize(555, 535, true);
+    } else {
+      win.setSize(1000, 800, true);
+    }
   }
-}
 
-
-export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={BucketPage} onEnter={requireAuth} />
-    <Route path="/login" component={LoginPage} />
-  </Route>
-);
+  return (
+    <Route path="/" component={App}>
+      <IndexRoute component={BucketPage} onEnter={requireAuth} />
+      <Route path="/login" component={LoginPage} />
+    </Route>
+  );
+};

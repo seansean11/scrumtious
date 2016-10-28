@@ -4,3 +4,5 @@ node_modules/
 *.swp
 dist/
 Scrumtious-*/
+coverage/
+.nyc_output/

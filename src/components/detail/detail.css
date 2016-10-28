@@ -19,5 +19,13 @@
 
 .tab__todo {
   transition: height 0.2s;
+  height: 100%;
 }
 
+.todo__title {
+  margin: 0;
+}
+
+.todo__summary {
+  margin-top: 0;
+}

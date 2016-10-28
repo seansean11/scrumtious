@@ -16,3 +16,4 @@ export const ITEM_ADD = 'ITEM_ADD';
 export const ITEMS_ADD = 'ITEMS_ADD';
 export const ITEM_DELETE = 'ITEM_DELETE';
 export const ITEM_ACTIVATE = 'ITEM_ACTIVATE';
+export const ITEM_MOVE = 'ITEM_MOVE';

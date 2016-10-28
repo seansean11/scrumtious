@@ -1,0 +1,19 @@
+{
+	"include": [
+		"src/**/*.js"
+	],
+	"exclude": [
+		"src/**/*.test.js",
+		"src/test"
+	],
+	"reporter": [
+		"lcov",
+		"text",
+		"html"
+	],
+	"require": [
+		"babel-register"
+	],
+	"sourceMap": false,
+	"instrument": false
+}

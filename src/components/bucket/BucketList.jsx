@@ -1,19 +1,19 @@
 import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Reorder from 'react-reorder';
+
 import * as itemActions from '../../actions/itemActions';
 import BucketItem from './BucketItem';
 import Accordion from '../global/Accordion';
 
-class BucketList extends Component {
+export class BucketList extends Component {
   constructor(props, context) {
     super(props, context);
-    this.toggleItemState = ::this.toggleItemState;
-    this.itemActivate = ::this.itemActivate;
-  }
+    if (!this.props.items.length) this.props.toggleTab('tickets');
 
-  toggleItemState(item) {
-    this.props.actions.itemEdit(Object.assign(item, { done: !item.done }));
+    this.itemActivate = ::this.itemActivate;
+    this.toggleItemState = ::this.toggleItemState;
   }
 
   itemActivate(item) {
@@ -25,19 +25,28 @@ class BucketList extends Component {
     }
   }
 
+  toggleItemState(item) {
+    this.props.actions.itemEdit(Object.assign(item, { done: !item.done }));
+  }
+
   render() {
+    const sharedProps = {
+      toggleItemState: this.toggleItemState,
+      itemActivate: this.itemActivate
+    };
+
     return (
       <Accordion title="Running">
-        <ul className="bucket-list">
-          {this.props.items.map(item =>
-            <BucketItem
-              key={item.id}
-              item={item}
-              itemActivate={this.itemActivate}
-              toggleItemState={this.toggleItemState}
-            />
-          )}
-        </ul>
+        <Reorder
+          itemKey="id"
+          lock="horizontal"
+          holdTime="0"
+          list={this.props.items}
+          template={BucketItem}
+          listClass="bucket-list"
+          itemClass="bucket-list__item"
+          sharedProps={sharedProps}
+        />
       </Accordion>
     );
   }
