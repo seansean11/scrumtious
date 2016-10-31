@@ -12,7 +12,6 @@ export default (store) => {
     const state = store.getState();
 
     if (!state.auth.isAuthenticated) {
-      console.log(store);
       replace('/login');
       win.setSize(555, 535, true);
     } else {

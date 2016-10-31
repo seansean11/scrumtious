@@ -50,7 +50,7 @@ export function loginUser(creds, router) {
     dispatch(loginRequest(creds));
 
     return JiraApi.login(creds)
-      .then()
+      .then(response => dispatch(loginSuccess(response)))
       .then(() => router.push('/'))
       .catch(err => dispatch(loginFailure(err)));
   };

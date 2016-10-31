@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import debounce from 'debounce';
+import _ from 'lodash';
 import createLogger from 'redux-logger';
 import { hashHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
@@ -21,7 +21,7 @@ const enhancer = compose(
 export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState, enhancer);
 
-  const saveState = debounce(() => {
+  const saveState = _.debounce(() => {
     localStorage.setItem('state', JSON.stringify(store.getState()));
   }, 1000);
 

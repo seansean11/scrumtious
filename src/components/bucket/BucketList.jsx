@@ -10,10 +10,13 @@ import Accordion from '../global/Accordion';
 export class BucketList extends Component {
   constructor(props, context) {
     super(props, context);
-    if (!this.props.items.length) this.props.toggleTab('tickets');
 
     this.itemActivate = ::this.itemActivate;
     this.toggleItemState = ::this.toggleItemState;
+  }
+
+  componentWillMount() {
+    if (!this.props.items.length) this.props.toggleTab('tickets');
   }
 
   itemActivate(item) {

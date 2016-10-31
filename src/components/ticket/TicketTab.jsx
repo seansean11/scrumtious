@@ -11,15 +11,12 @@ import './ticket.css';
 class TicketTab extends Component {
   constructor(props, context) {
     super(props, context);
+    this.props.actions.getUserTickets(this.props.auth);
+    setInterval(() => this.props.actions.getUserTickets(this.props.auth), 60000);
 
     this.toggleTicket = ::this.toggleTicket;
     this.submitTickets = ::this.submitTickets;
     this.isActiveTicket = ::this.isActiveTicket;
-  }
-
-  componentWillMount() {
-    this.props.actions.getUserTickets(this.props.auth.user);
-    setInterval(() => this.props.actions.getUserTickets(this.props.auth.user), 60000);
   }
 
   submitTickets() {

@@ -28,9 +28,9 @@ function ticketsFailure(errorMessage) {
 export function getUserTickets(session) {
   if (session.isAuthenticated) {
     return dispatch => {
-      dispatch(ticketsRequest(session.username));
+      dispatch(ticketsRequest(session.user.username));
 
-      return JiraApi.getUserTickets(session)
+      return JiraApi.getUserTickets(session.user)
         .then(response => {
           dispatch(ticketsSuccess(response.issues));
         })

@@ -1,7 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-export default function auth(state = { isFetching: false }, action) {
-  console.log(action);
+export default function auth(state = { isFetching: false, isAuthenticated: false }, action) {
   switch (action.type) {
     case types.LOGIN_REQUEST:
       return Object.assign({}, state, {
